@@ -30,7 +30,7 @@
     </dependencies>
 
     <build>
-        <finalName>services</finalName>
+        <finalName>kushanpatelcmu</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
