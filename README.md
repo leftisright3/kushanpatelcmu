@@ -38,12 +38,12 @@ cp workspace/kushanpatelcmu/web/target/services.war /opt/apache-tomee-plus-1.7.4
 
 /opt/apache-tomee-plus-1.7.4/bin/startup.sh
 
-6. Navigate to http://localhost:8080/kushanpatelcmu
+6. Navigate to http://localhost:8080/kush
 
-** You should see a welcome page
+** You should see a welcome page (AKA The Master)
 
 7. Test the REST service by navigating to:
 
-http://localhost:8080/services/rest/methodPath/testing?queryParam=services
+http://localhost:8080/kush/rest/methodPath/testing?queryParam=services
 
 You should see a response with "testing services".
