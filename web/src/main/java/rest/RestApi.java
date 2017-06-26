@@ -37,4 +37,40 @@ public class RestApi {
                                 @QueryParam("location") String location) {
         controller.addNewBlogEntry(description, location);
     }
+
+    @GET
+    @Path("mymethod")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Object getAmarData() {
+
+        String returnString = "Here is a string \n";
+        int counter = 10;
+
+        returnString += "The counter has been initialized at " + counter +"\n";
+
+
+        while (counter >=0 ){
+            returnString +=("The Counter is at "+ counter)+ "\n";
+            counter--;
+
+
+        }
+        returnString +="\n";
+        returnString +="Let's print all the even numbers before 100 \n";
+
+        for(int i = 0; i <=100;i++){
+            if (i%2 == 0){
+                returnString += i +" is an even number \n";
+            }
+
+        }
+
+
+
+
+
+        return returnString;
+    }
+
+
 }
