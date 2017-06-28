@@ -81,7 +81,7 @@ Note - After install Maven and JDK, you will need to add the JAVA_HOME, MAVEN_HO
        `modified_by_uid character varying(255) NOT NULL,` \
        `modified_time timestamp without time zone,` \
        `description character varying(512),` \
-       `location character varying(255)` \
+       `location character varying(255),` \
        `CONSTRAINT blog_entry_pkey PRIMARY KEY (id)` \
        `);`
 
