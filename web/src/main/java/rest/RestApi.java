@@ -36,7 +36,21 @@ public class RestApi {
     public void addNewBlogEntry(@QueryParam("description") String description,
                                 @QueryParam("location") String location) {
         controller.addNewBlogEntry(description, location);
-    }
+    } //end addNewBlogEntryMethod
+
+
+    @PUT
+    @Path("/entries")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void editBlogEntry(@QueryParam("id") Long id, @QueryParam("location") String location)
+    {
+        controller.editBlogEntryLocation(id, location);
+    }//end editBlogEntry
+
+
+
+
+
 
     @GET
     @Path("mymethod")
@@ -65,12 +79,8 @@ public class RestApi {
 
         }
 
-
-
-
-
         return returnString;
-    }
+    } //end getAmarData method
 
 
 }

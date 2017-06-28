@@ -27,6 +27,10 @@ public class BlogEntryDataService {
         return em.createQuery(cq).getResultList();
     }
 
+    public BlogEntry selectBlogEntry(Long id){
+        return em.find(BlogEntry.class, id);
+    }
+
     public BlogEntry createBlogEntry(BlogEntry blogEntry) {
         Calendar now = Calendar.getInstance();
         blogEntry.setCreatedTime(now);
@@ -42,6 +46,7 @@ public class BlogEntryDataService {
         blogEntry.setModifiedTime(now);
         blogEntry.setModifiedByUid("SYSTEM");
         em.merge(blogEntry);
+
         return blogEntry;
     }
 }

@@ -25,4 +25,10 @@ public class BlogEntryController {
         blogEntryDataService.createBlogEntry(entry);
     }
 
+    public void editBlogEntryLocation(Long id, String location){
+        BlogEntry entry = blogEntryDataService.selectBlogEntry(id);
+        entry.setLocation(location);
+        blogEntryDataService.updateBlogEntry(entry);
+    }//end EditLocation method
+
 }
