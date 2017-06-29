@@ -3,8 +3,9 @@ var website = angular.module("website", [
     "website.controllers"
 ]);
 
-website.config(["$routeProvider",
-    function($routeProvider) {
+website.config(["$routeProvider", "$locationProvider",
+    function($routeProvider, $locationProvider) {
+        $locationProvider.hashPrefix('');
         $routeProvider.
             when("/home", {
                 templateUrl: "src/html/home.html",
