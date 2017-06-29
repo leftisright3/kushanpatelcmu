@@ -22,7 +22,7 @@ public class BlogEntryController {
         BlogEntry entry = new BlogEntry();
         entry.setDescription(description);
         entry.setLocation(location);
-        blogEntryDataService.createBlogEntry(entry);
+        blogEntryDataService.persistBlogEntry(entry);
     }
 
     public void editBlogEntryLocation(Long id, String location){

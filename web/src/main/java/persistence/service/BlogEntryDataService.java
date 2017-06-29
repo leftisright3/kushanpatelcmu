@@ -31,7 +31,7 @@ public class BlogEntryDataService {
         return em.find(BlogEntry.class, id);
     }
 
-    public BlogEntry createBlogEntry(BlogEntry blogEntry) {
+    public BlogEntry persistBlogEntry(BlogEntry blogEntry) {
         Calendar now = Calendar.getInstance();
         blogEntry.setCreatedTime(now);
         blogEntry.setModifiedTime(now);

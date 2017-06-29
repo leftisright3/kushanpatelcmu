@@ -65,6 +65,28 @@
                     </webResources>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>de.sandroboehme.lesscss</groupId>
+                <artifactId>lesscss-maven-plugin</artifactId>
+                <configuration>
+                    <watch>false</watch>
+                    <watchInterval>500</watchInterval>
+                    <sourceDirectory>src/main/webapp/src/less</sourceDirectory>
+                    <outputDirectory>src/main/webapp/src/css</outputDirectory>
+                    <compress>false</compress>
+                    <includes>
+                        <include>*.less</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
