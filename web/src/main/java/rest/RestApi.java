@@ -42,9 +42,11 @@ public class RestApi {
     @PUT
     @Path("/entries")
     @Produces(MediaType.APPLICATION_JSON)
-    public void editBlogEntry(@QueryParam("id") Long id, @QueryParam("location") String location)
+    public void editBlogEntry(@QueryParam("id") Long id,
+                              @QueryParam("location") String location,
+                              @QueryParam("description") String description)
     {
-        controller.editBlogEntryLocation(id, location);
+        controller.editBlogEntry(id, location, description);
     }//end editBlogEntry
 
 

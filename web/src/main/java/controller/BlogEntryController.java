@@ -25,9 +25,12 @@ public class BlogEntryController {
         blogEntryDataService.persistBlogEntry(entry);
     }
 
-    public void editBlogEntryLocation(Long id, String location){
+    
+    public void editBlogEntry(Long id, String location, String description)
+    {
         BlogEntry entry = blogEntryDataService.selectBlogEntry(id);
         entry.setLocation(location);
+        entry.setDescription(description);
         blogEntryDataService.updateBlogEntry(entry);
     }//end EditLocation method
 
