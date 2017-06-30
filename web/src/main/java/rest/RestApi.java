@@ -38,21 +38,15 @@ public class RestApi {
         controller.addNewBlogEntry(description, location);
     } //end addNewBlogEntryMethod
 
-
     @PUT
     @Path("/entries")
     @Produces(MediaType.APPLICATION_JSON)
-    public void editBlogEntry(@QueryParam("id") Long id,
-                              @QueryParam("location") String location,
-                              @QueryParam("description") String description)
+    @Consumes(MediaType.WILDCARD)
+    public void editBlogEntry(BlogEntryTO blogEntryTO)
     {
-        controller.editBlogEntry(id, location, description);
-    }//end editBlogEntry
+        controller.editBlogEntry(blogEntryTO);
 
-
-
-
-
+    }//end editBlogEntry()
 
     @GET
     @Path("mymethod")
