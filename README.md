@@ -62,6 +62,8 @@ Note - After install Maven and JDK, you will need to add the JAVA_HOME, MAVEN_HO
 
 * Unix \
     `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
+* Windows (note: this assumes you're using version 9.6, and the default install directory. If not, point it towards where your data folder is) \
+     `pg_ctl -D "C:\Program Files\PostgreSQL\9.6\data" start`
 
 ### 9. Create the database
 
@@ -87,6 +89,12 @@ Note - After install Maven and JDK, you will need to add the JAVA_HOME, MAVEN_HO
 
 ### 11. Configure Tomcat JDBC resource
 
+
+* Download the Postgres JDBC Driver from: \
+ `https://jdbc.postgresql.org/` 
+  
+* Copy the downloaded file to "{Tomcat-root}\bin" 
+
 * Edit the `{tomcat-root}/conf/tomee.xml` file to include the following:
 
     `<Resource  id="WebsiteDataStore" type="DataSource">` \
@@ -99,9 +107,14 @@ Note - After install Maven and JDK, you will need to add the JAVA_HOME, MAVEN_HO
     `</Resource>`
     
 * Be sure to restart the server
+    * Unix:
 
     `${tomcat-root}/bin/shutdown.sh` \
-    `${tomcat-root}/bin/startup.sh`
+    `${tomcat-root}/bin/startup.sh` \
+    
+    * Windows: \
+    `{Tomcat-Root}/bin/shutdown.bat` \
+    `{Tomcat-Root}/bin/startup.bat`
        
 ### 12. Test the DB connectivity
 
