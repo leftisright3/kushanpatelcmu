@@ -4,7 +4,6 @@ import controller.BlogEntryController;
 import persistence.model.BlogEntry;
 
 import javax.inject.Inject;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -29,6 +28,15 @@ public class RestApi {
     public List<BlogEntry> getAllBlogEntries(){
         return controller.getAllEntries();
     }
+
+    @GET
+    @Path("/entries/latest")
+    @Produces(MediaType.APPLICATION_JSON)
+    public BlogEntry getLatestEntry()
+    {
+        return controller.getLatestEntry();
+    }
+
 
     @POST
     @Path("/entries")

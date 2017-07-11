@@ -46,7 +46,18 @@ public class BlogEntryDataService {
         blogEntry.setModifiedTime(now);
         blogEntry.setModifiedByUid("SYSTEM");
         em.merge(blogEntry);
-
         return blogEntry;
+    }
+
+    public void deleteBlogEntry(BlogEntry blogEntry){
+        em.remove(blogEntry);
+    }
+
+    public BlogEntry getLatestEntry() {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<BlogEntry> cq = cb.createQuery(BlogEntry.class);
+        Root<BlogEntry> blogEntryEntity = cq.from(BlogEntry.class);
+        cq.select(blogEntryEntity).orderBy(cb.desc(blogEntryEntity.get("modifiedTime")));
+        return em.createQuery(cq).setMaxResults(1).getSingleResult();
     }
 }

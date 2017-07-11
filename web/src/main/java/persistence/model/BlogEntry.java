@@ -101,4 +101,6 @@ public class BlogEntry {
     public void setLocation(String location) {
         this.location = location;
     }
+
+
 }

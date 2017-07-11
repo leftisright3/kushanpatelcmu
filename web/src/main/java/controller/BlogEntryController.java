@@ -19,6 +19,7 @@ public class BlogEntryController {
         return blogEntryDataService.getAllEntries();
     }
 
+
     public void addNewBlogEntry(String description, String location) {
         BlogEntry entry = new BlogEntry();
         entry.setDescription(description);
@@ -33,4 +34,10 @@ public class BlogEntryController {
         entry.setBlogData(blogEntryTO.blogData);
         blogEntryDataService.updateBlogEntry(entry);
     }
+
+    public BlogEntry getLatestEntry() {
+        return blogEntryDataService.getLatestEntry();
+    }
+
+
 }
