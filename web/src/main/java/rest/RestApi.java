@@ -37,13 +37,20 @@ public class RestApi {
         return controller.getLatestEntry();
     }
 
+    @DELETE
+    @Path("/entries/{id}")
+    public void deleteBlogEntry(@PathParam("id") Long blogEntryId)
+    {
+        controller.deleteBlogEntry(blogEntryId);
+    }
+
 
     @POST
     @Path("/entries")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addNewBlogEntry(@QueryParam("description") String description,
-                                @QueryParam("location") String location) {
-        controller.addNewBlogEntry(description, location);
+    public void addNewBlogEntry(@QueryParam("description") String desc,
+                                @QueryParam("location") String loc) {
+        controller.addNewBlogEntry(desc, loc);
     } //end addNewBlogEntryMethod
 
     @PUT

@@ -13,10 +13,10 @@ import java.util.List;
 public class BlogEntryController {
 
     @Inject
-    BlogEntryDataService blogEntryDataService;
+    BlogEntryDataService beds;
 
     public List<BlogEntry> getAllEntries(){
-        return blogEntryDataService.getAllEntries();
+        return beds.getAllEntries();
     }
 
 
@@ -24,20 +24,22 @@ public class BlogEntryController {
         BlogEntry entry = new BlogEntry();
         entry.setDescription(description);
         entry.setLocation(location);
-        blogEntryDataService.persistBlogEntry(entry);
+        beds.persistBlogEntry(entry);
     }
 
     public void editBlogEntry(BlogEntryTO blogEntryTO){
-        BlogEntry entry = blogEntryDataService.selectBlogEntry(blogEntryTO.id);
+        BlogEntry entry = beds.selectBlogEntry(blogEntryTO.id);
         entry.setLocation(blogEntryTO.location);
         entry.setDescription(blogEntryTO.description);
         entry.setBlogData(blogEntryTO.blogData);
-        blogEntryDataService.updateBlogEntry(entry);
+        beds.updateBlogEntry(entry);
     }
 
     public BlogEntry getLatestEntry() {
-        return blogEntryDataService.getLatestEntry();
+        return beds.getLatestEntry();
     }
 
-
+    public void deleteBlogEntry(Long blogEntryId) {
+        beds.deleteBlogEntry(blogEntryId);
+    }
 }

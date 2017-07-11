@@ -49,8 +49,9 @@ public class BlogEntryDataService {
         return blogEntry;
     }
 
-    public void deleteBlogEntry(BlogEntry blogEntry){
-        em.remove(blogEntry);
+    public void deleteBlogEntry(Long idToDelete) {
+        BlogEntry entryToDelete = em.find(BlogEntry.class, idToDelete);
+        em.remove(entryToDelete);
     }
 
     public BlogEntry getLatestEntry() {
