@@ -21,7 +21,7 @@ website.config(["$routeProvider", "$locationProvider",
             }).
             when("/contact", {
                 templateUrl: "src/html/contact.html",
-                controller: 'homeCtrl',
+                controller: 'contactCtrl',
             }).
             when("/", {
                 redirectTo: "/home"
