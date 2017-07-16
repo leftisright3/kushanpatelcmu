@@ -42,4 +42,44 @@ public class BlogEntryController {
     public void deleteBlogEntry(Long blogEntryId) {
         beds.deleteBlogEntry(blogEntryId);
     }
+
+
+    public BlogEntryTO counterPractice(){
+
+        BlogEntryTO practiceTO = new BlogEntryTO();
+        practiceTO.id = 3434343434L;
+
+        return practiceTO;
+
+
+//        String returnString = "Here is a string \n";
+//        int counter = 10;
+//
+//        returnString += "The counter has been initialized at " + counter +"\n";
+//
+//
+//        while (counter >=0 ){
+//            returnString +=("The Counter is at "+ counter)+ "\n";
+//            counter--;
+//
+//
+//        }
+//        returnString +="\n";
+//        returnString +="Let's print all the even numbers before 100 \n";
+//
+//        for(int i = 0; i <=100;i++){
+//            if (i%2 == 0){
+//                returnString += i +" is an even number \n";
+//            }
+//
+//        }
+
+
+
+
+    }//end counterPractice
+
+
+
+
 }
