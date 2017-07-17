@@ -20,11 +20,22 @@ public class BlogEntryController {
     }
 
 
-    public void addNewBlogEntry(String description, String location) {
+//    public void addNewBlogEntry(String description, String location) {
+//        BlogEntry entry = new BlogEntry();
+//        entry.setDescription(description);
+//        entry.setLocation(location);
+//        beds.persistBlogEntry(entry);
+//    }
+
+    public void addNewBlogEntry(BlogEntryTO blogEntryTO) {
         BlogEntry entry = new BlogEntry();
-        entry.setDescription(description);
-        entry.setLocation(location);
+        entry.setLocation(blogEntryTO.location);
+        entry.setDescription(blogEntryTO.description);
+        entry.setBlogData(blogEntryTO.blogData);
+
         beds.persistBlogEntry(entry);
+
+
     }
 
     public void editBlogEntry(BlogEntryTO blogEntryTO){
@@ -78,7 +89,6 @@ public class BlogEntryController {
 
 
     }//end counterPractice
-
 
 
 

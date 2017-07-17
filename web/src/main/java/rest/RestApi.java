@@ -45,13 +45,23 @@ public class RestApi {
     }
 
 
+//    @POST
+//    @Path("/entries")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public void addNewBlogEntry(@QueryParam("description") String desc,
+//                                @QueryParam("location") String loc) {
+//        controller.addNewBlogEntry(desc, loc);
+//    } //end addNewBlogEntryMethod
+
+
     @POST
     @Path("/entries")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addNewBlogEntry(@QueryParam("description") String desc,
-                                @QueryParam("location") String loc) {
-        controller.addNewBlogEntry(desc, loc);
-    } //end addNewBlogEntryMethod
+    public void addNewBlogEntry(BlogEntryTO blogEntryTO)
+    {
+        controller.addNewBlogEntry(blogEntryTO);
+    }
+
 
     @PUT
     @Path("/entries")
