@@ -4,7 +4,7 @@ angular.module("blog.controllers", [])
 
         $scope.portfolio = [
             {
-                title : "Thailand Two",
+                title : "Thailand",
                 heading: "Graphic Design",
                 imgThumbnail: "roundicons.png",
                 imgFull: "roundicons-free.png",
