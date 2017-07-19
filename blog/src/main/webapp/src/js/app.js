@@ -1,18 +1,16 @@
-var website = angular.module("blog", [
+var blog = angular.module("blog", [
     "ngRoute",
-    "blog.controllers"
+    "blog.controllers",
+    "youtube-embed"
 ]);
 
-website.config(["$routeProvider", "$locationProvider",
+blog.config(["$routeProvider", "$locationProvider",
     function($routeProvider, $locationProvider) {
-        $locationProvider.hashPrefix('');
-        $routeProvider.
-            when("/home", {
-                templateUrl: "src/html/home.html",
-                controller: 'homeCtrl',
-            }).
-            when("/", {
-                redirectTo: "/home"
-            })
+//        $locationProvider.hashPrefix('');
+//        $routeProvider.
+//            when("/", {
+////                templateUrl: "src/html/home.html",
+//                controller: 'homeCtrl',
+//            })
     }
 ]);
