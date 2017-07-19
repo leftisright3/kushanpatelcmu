@@ -1,6 +1,7 @@
 var blog = angular.module("blog", [
     "ngRoute",
-    "blog.controllers"
+    "blog.controllers",
+    "youtube-embed"
 ]);
 
 blog.config(["$routeProvider", "$locationProvider",
