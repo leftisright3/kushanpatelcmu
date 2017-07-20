@@ -5,7 +5,7 @@ angular.module("blog.controllers", [])
         $scope.portfolio = [
             {
                 title : "Thailand",
-                heading: "Graphic Design",
+                heading: "Officially the Kingdom of Thailand and formerly known as Siam",
                 imgThumbnail: "roundicons.png",
                 imgFull: "roundicons-free.png",
                 content: "Some blog entry text here about all the nonsense",
