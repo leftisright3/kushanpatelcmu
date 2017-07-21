@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="entry in portfolio">
+            <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="entry in portfolio" ng-click="loadVideo()">
                 <a href="#Modal{{$index}}" class="portfolio-link" data-toggle="modal">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
@@ -43,15 +43,25 @@
                             <!-- Project Details Go Here -->
                             <h3>{{entry.title}}</h3>
                             <p class="item-intro text-muted">{{entry.heading}}</p>
-                            <img class="img-responsive img-centered" ng-src="vendor/img/portfolio/{{entry.imgFull}}" alt="">
-                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <p>
-                                <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
+
                             <ul class="list-inline">
-                                <li>Date: July 2014</li>
-                                <li>Client: Round Icons</li>
-                                <li>Category: Graphic Design</li>
+                                <li>Date: {{entry.travelDateBegin}}</li>
+                                <li>Locations: Phuket, Chiang Mai, Bangkok</li>
+                                <li>Activities: Scuba Diving, Sightseeing</li>
                             </ul>
+
+                            <!--<p ng-repeat="videoLink in entry.videos">-->
+                                <!--<youtube-video video-url="videoUrl"></youtube-video>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--<video controls autoplay="autoplay" preload="auto">-->
+                                    <!--<source ng-src="{{videoUrl | trusted}}" type="video/mp4"/>-->
+                                <!--</video>-->
+                            <!--</p>-->
+                            <p ng-repeat="videoId in entry.videos">
+                                <iframe ng-src="{{youtubeLinkPrefix + videoId | trusted}}" frameborder="0" allowfullscreen></iframe>
+                            </p>
+
                             <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
                         </div>
                     </div>

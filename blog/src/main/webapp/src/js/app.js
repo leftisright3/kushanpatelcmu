@@ -1,12 +1,12 @@
 var blog = angular.module("blog", [
     "ngRoute",
-    "blog.controllers",
-    "youtube-embed"
+    "blog.controllers"
 ]);
 
-blog.config(["$routeProvider", "$locationProvider",
-    function($routeProvider, $locationProvider) {
+blog.config(["$routeProvider", "$locationProvider", "$sceDelegateProvider",
+    function($routeProvider, $locationProvider, $sceDelegateProvider) {
         $locationProvider.hashPrefix('');
+        $sceDelegateProvider.resourceUrlWhitelist(['self', new RegExp('^(http[s]?):\/\/(w{3}.)?youtube\.com/.+$')]);
 //        $routeProvider.
 //            when("/home", {
 //                templateUrl: "src/html/home.html",
@@ -17,3 +17,9 @@ blog.config(["$routeProvider", "$locationProvider",
 //            })
     }
 ]);
+
+blog.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);
