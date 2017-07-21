@@ -7,12 +7,27 @@ angular.module("blog.controllers", [])
             {
                 title : "Thailand",
                 heading: "Officially the Kingdom of Thailand and formerly known as Siam",
+                locations: "Phuket, Chiang Mai, Bangkok",
+                activities: "Scuba Diving, Sightseeing",
+                travelDate: "September 2016",
                 imgThumbnail: "roundicons.png",
-                imgFull: "roundicons-free.png",
-                content: "Some blog entry text here about all the nonsense",
-                travelDateBegin: "September 1st 2016",
-                travelDateEnd: "September 11st 2016",
-                videos: ["juH-ckrN-cQ", "QqUnpCUi9KQ", "SU1Ej9Yqt68"]
+                sections:[
+                    {
+                        sectionTitle: "Phuket",
+                        sectionContent: "It's beachy and tropical. Also, wedding",
+                        dateStart: "September 1st 2016",
+                        dateEnd: "September 3rd 2016",
+                        videoId: "juH-ckrN-cQ"
+                    },
+                    {
+                        sectionTitle: "Chiang Mai",
+                        sectionContent: "It's mountainous. Also, temples and kitties",
+                        dateStart: "September 4th 2016",
+                        dateEnd: "September 6th 2016",
+                        videoId: "juH-ckrN-cQ"
+                    }
+                ]
+
             }
         ];
 

@@ -105,10 +105,10 @@ fieldset[disabled] .btn-primary.active {
   border-color: #fed136;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
   border-radius: 3px;
-  font-size: 18px;
-  padding: 20px 40px;
+  font-size: 14px;
+  padding: 10px 20px;
 }
 .btn-xl:hover,
 .btn-xl:focus,
@@ -278,15 +278,15 @@ header .intro-text .intro-heading {
   }
 }
 section {
-  padding: 100px 0;
+  padding: 75px 0;
 }
 section h2.section-heading {
-  font-size: 40px;
+  font-size: 30px;
   margin-top: 0;
   margin-bottom: 15px;
 }
 section h3.section-subheading {
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: none;
   font-style: italic;
@@ -295,7 +295,7 @@ section h3.section-subheading {
 }
 @media (min-width: 768px) {
   section {
-    padding: 150px 0;
+    padding: 115px 0;
   }
 }
 .service-heading {
