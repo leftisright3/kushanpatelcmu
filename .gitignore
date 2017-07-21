@@ -3,3 +3,4 @@ web/target/
 .idea/
 web/src/main/webapp/src/css/style.css
 blog/target
+blog/src/main/webapp/src/css/style.css

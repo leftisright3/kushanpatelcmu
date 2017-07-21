@@ -7,7 +7,7 @@
     <persistence-unit name="primary">
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <jta-data-source>WebsiteDataStore</jta-data-source>
-        <class>persistence.model.BlogEntry</class>
+        <class>persistence.model.Customer</class>
         <properties>
             <!-- uncommenting this will update the schema in the database, useful primarily for development -->
             <!--<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" />-->

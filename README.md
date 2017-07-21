@@ -87,6 +87,23 @@ Note - After install Maven and JDK, you will need to add the JAVA_HOME, MAVEN_HO
        `CONSTRAINT blog_entry_pkey PRIMARY KEY (id)` \
        `);`
 
+    `create table customer(
+
+     id bigserial not null,
+     created_by_uid character varying(255),
+     created_time timestamp without time zone,
+     modified_by_uid character varying(255) NOT NULL,
+     modified_time timestamp without time zone,
+     email_address character varying(255),
+     mailing_address character varying(512),
+     billing_address character varying(255),
+     first_name character varying(512),
+     last_name character varying(255),
+     age bigint,
+     phone_number character varying(255)
+
+     );`
+
 ### 11. Configure Tomcat JDBC resource
 
 

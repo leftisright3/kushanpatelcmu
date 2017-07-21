@@ -35,8 +35,6 @@ public class BlogEntryDataService {
         Calendar now = Calendar.getInstance();
         blogEntry.setCreatedTime(now);
         blogEntry.setModifiedTime(now);
-        blogEntry.setCreatedByUid("SYSTEM");
-        blogEntry.setModifiedByUid("SYSTEM");
         em.persist(blogEntry);
         return blogEntry;
     }
@@ -44,7 +42,6 @@ public class BlogEntryDataService {
     public BlogEntry updateBlogEntry(BlogEntry blogEntry) {
         Calendar now = Calendar.getInstance();
         blogEntry.setModifiedTime(now);
-        blogEntry.setModifiedByUid("SYSTEM");
         em.merge(blogEntry);
         return blogEntry;
     }

@@ -56,7 +56,6 @@ public class RestApi {
     @PUT
     @Path("/entries")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.WILDCARD)
     public void editBlogEntry(BlogEntryTO blogEntryTO)
     {
         controller.editBlogEntry(blogEntryTO);

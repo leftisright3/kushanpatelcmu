@@ -32,9 +32,10 @@ public class BlogEntryController {
         entry.setLocation(blogEntryTO.location);
         entry.setDescription(blogEntryTO.description);
         entry.setBlogData(blogEntryTO.blogData);
+        entry.setCreatedByUid(blogEntryTO.createdByUid);
+        entry.setModifiedByUid(blogEntryTO.modifiedByUid);
 
         beds.persistBlogEntry(entry);
-
 
     }
 
@@ -43,6 +44,7 @@ public class BlogEntryController {
         entry.setLocation(blogEntryTO.location);
         entry.setDescription(blogEntryTO.description);
         entry.setBlogData(blogEntryTO.blogData);
+        entry.setModifiedByUid(blogEntryTO.modifiedByUid);
         beds.updateBlogEntry(entry);
     }
 

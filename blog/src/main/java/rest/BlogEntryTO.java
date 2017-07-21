@@ -8,4 +8,6 @@ public class BlogEntryTO {
     public String location;
     public String description;
     public byte[] blogData;
+    public String modifiedByUid;
+    public String createdByUid;
 }
