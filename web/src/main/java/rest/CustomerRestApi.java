@@ -49,4 +49,12 @@ public class CustomerRestApi
         customerController.deleteCustomer(customerId);
     }
 
+    @GET
+    @Path("/customers/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Customer getSpecificCustomer(@PathParam("id") Long customerId)
+    {
+        return customerController.getCustomerById(customerId);
+    }
+
 }

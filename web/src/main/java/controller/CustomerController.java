@@ -57,4 +57,8 @@ public class CustomerController
         cds.deleteCustomer(customerId);
     }
 
+    public Customer getCustomerById(Long customerId)
+    {
+        return cds.selectCustomer(customerId);
+    }
 }
