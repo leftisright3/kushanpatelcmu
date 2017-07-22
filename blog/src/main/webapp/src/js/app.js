@@ -1,18 +1,25 @@
-var website = angular.module("blog", [
+var blog = angular.module("blog", [
     "ngRoute",
     "blog.controllers"
 ]);
 
-website.config(["$routeProvider", "$locationProvider",
-    function($routeProvider, $locationProvider) {
+blog.config(["$routeProvider", "$locationProvider", "$sceDelegateProvider",
+    function($routeProvider, $locationProvider, $sceDelegateProvider) {
         $locationProvider.hashPrefix('');
-        $routeProvider.
-            when("/home", {
-                templateUrl: "src/html/home.html",
-                controller: 'homeCtrl',
-            }).
-            when("/", {
-                redirectTo: "/home"
-            })
+        $sceDelegateProvider.resourceUrlWhitelist(['self', new RegExp('^(http[s]?):\/\/(w{3}.)?youtube\.com/.+$')]);
+//        $routeProvider.
+//            when("/home", {
+//                templateUrl: "src/html/home.html",
+//                controller: 'homeCtrl',
+//            }).
+//            when("/", {
+//                redirectTo: "/home"
+//            })
     }
 ]);
+
+blog.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);
