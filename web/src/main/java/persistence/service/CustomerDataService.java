@@ -7,9 +7,11 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.Calendar;
 import java.util.List;
+
 
 /**
  * Created by patel_000 on 7/19/2017.
@@ -22,7 +24,7 @@ public class CustomerDataService
 
     public List<Customer> getAllCustomers()
     {
-        //ToDo execute query to get all customers
+
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
         Root<Customer> customerEntity = cq.from(Customer.class);
@@ -35,13 +37,11 @@ public class CustomerDataService
         Calendar now = Calendar.getInstance();
         customer.setCreatedTime(now);
         customer.setModifiedTime(now);
-        //customer.setCreatedByUid("");
-        //customer.setModifiedByUid("");
         em.persist(customer);
         return customer;
     }
 
-    public Customer selectCustomer(Long id)
+    public Customer selectCustomerById(Long id)
     {
         return em.find(Customer.class, id);
     }
@@ -58,6 +58,34 @@ public class CustomerDataService
     {
         Customer entityToDelete = em.find(Customer.class, idToDelete);
         em.remove(entityToDelete);
+    }
+
+    public Customer selectCustomerByLastName(String customerLastName)
+    {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
+        Root<Customer> customerEntity = cq.from(Customer.class);
+        Predicate condition = cb.equal(customerEntity.get("lastName"), customerLastName);
+
+        cq.where(condition);
+        return em.createQuery(cq).getSingleResult();
+
+        //ToDo execute query to get customer by last name
+
+    }
+
+    public Customer selectCustomerByFirstName(String customerfirstName)
+    {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
+        Root<Customer> customerEntity = cq.from(Customer.class);
+        Predicate condition = cb.equal(customerEntity.get("firstName"), customerfirstName);
+
+        cq.where(condition);
+        return em.createQuery(cq).getSingleResult();
+
+        //ToDo execute query to get customer by last name
+
     }
 
     //
