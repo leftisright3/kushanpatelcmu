@@ -39,7 +39,7 @@ public class CustomerController
     public void editCustomer(CustomerTO customerTO)
 
     {
-        Customer cus = cds.selectCustomer(customerTO.id);
+        Customer cus = cds.selectCustomerById(customerTO.id);
         cus.setAge(customerTO.age);
         cus.setFirstName(customerTO.firstName);
         cus.setLastName(customerTO.lastName);
@@ -59,6 +59,16 @@ public class CustomerController
 
     public Customer getCustomerById(Long customerId)
     {
-        return cds.selectCustomer(customerId);
+        return cds.selectCustomerById(customerId);
+    }
+
+    public Customer getCustomerByLastName(String customerLastName)
+    {
+        return cds.selectCustomerByLastName(customerLastName);
+    }
+
+    public Customer getCustomerByFirstName (String customerFirstName)
+    {
+        return cds.selectCustomerByFirstName(customerFirstName);
     }
 }
