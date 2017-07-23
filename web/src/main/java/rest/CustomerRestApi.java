@@ -49,6 +49,13 @@ public class CustomerRestApi
         customerController.deleteCustomer(customerId);
     }
 
+
+    @GET
+    @Path("/customers/{LName}")
+    public List<Customer> getCustomersByLName(@PathParam("LName") String customerLName){
+        return customerController.getCustomerByLName(customerLName);
+    }
+
     @GET
     @Path("/customers/{id}")
     @Produces(MediaType.APPLICATION_JSON)
