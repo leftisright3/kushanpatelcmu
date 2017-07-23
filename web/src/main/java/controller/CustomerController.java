@@ -61,6 +61,4 @@ public class CustomerController
     {
         return cds.selectCustomer(customerId);
     }
-
-    public List <Customer> getCustomerByLName(String customerLName) {return cds.getCustomerByLName;}
 }
