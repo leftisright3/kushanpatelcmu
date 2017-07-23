@@ -22,6 +22,14 @@ public class CustomerDataService
     @Inject
     private EntityManager em;
 
+    public List<Customer> getCustomerByLName(String LName){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
+        Root<Customer> customerEntity = cq.from(Customer.class);
+        cq.select(customerEntity).orderBy(cb.desc(customerEntity.get(LName)));
+        return em.createQuery(cq).getResultList();
+    }
+
     public List<Customer> getAllCustomers()
     {
 
