@@ -28,15 +28,15 @@ public class CustomerRestApi
     @POST
     @Path("/customers")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addNewCustomer(CustomerTO customerTO) {
-        customerController.addNewCustomer(customerTO);
+    public Customer addNewCustomer(CustomerTO customerTO) {
+        return customerController.addNewCustomer(customerTO);
     }
 
     @PUT
     @Path("/customers")
     @Produces(MediaType.APPLICATION_JSON)
-    public void editCustomer(CustomerTO customerTO) {
-        customerController.editCustomer(customerTO);
+    public Customer editCustomer(CustomerTO customerTO) {
+       return customerController.editCustomer(customerTO);
     }
 
     @DELETE

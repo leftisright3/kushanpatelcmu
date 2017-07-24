@@ -20,7 +20,7 @@ public class CustomerController
         return cds.getAllCustomers();
     }
 
-    public void addNewCustomer(CustomerTO customerTO)
+    public Customer addNewCustomer(CustomerTO customerTO)
     {
         Customer cus = new Customer();
         cus.setAge(customerTO.age);
@@ -34,9 +34,10 @@ public class CustomerController
         cus.setModifiedByUid(customerTO.modifiedByUid);
 
         cds.persistCustomer(cus);
+        return cus;
     }
 
-    public void editCustomer(CustomerTO customerTO)
+    public Customer editCustomer(CustomerTO customerTO)
 
     {
         Customer cus = cds.selectCustomerById(customerTO.id);
@@ -50,6 +51,7 @@ public class CustomerController
         cus.setCreatedByUid(customerTO.createdByUid);
         cus.setModifiedByUid(customerTO.modifiedByUid);
         cds.updateCustomer(cus);
+        return cus;
     }
 
     public void deleteCustomer(Long customerId)
