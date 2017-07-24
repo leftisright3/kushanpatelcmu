@@ -73,4 +73,6 @@ public class CustomerController
     {
         return cds.selectCustomerByFirstName(customerFirstName);
     }
+
+    public List <Customer> getCustomerByLName(String customerLName) {return cds.getCustomerByLName;}
 }
