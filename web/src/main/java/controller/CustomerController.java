@@ -59,20 +59,31 @@ public class CustomerController
         cds.deleteCustomer(customerId);
     }
 
+
     public Customer getCustomerById(Long customerId)
     {
         return cds.selectCustomerById(customerId);
     }
 
-    public Customer getCustomerByLastName(String customerLastName)
+
+    public Customer findCustomer(String passedString, Integer passedInt)
     {
-        return cds.selectCustomerByLastName(customerLastName);
+
+        return null;
     }
 
-    public Customer getCustomerByFirstName (String customerFirstName)
+    public List<Customer> getCustomersById(Long customerId)
     {
-        return cds.selectCustomerByFirstName(customerFirstName);
+        return cds.selectCustomersById(customerId);
     }
 
-    public List <Customer> getCustomerByLName(String customerLName) {return cds.getCustomerByLName;}
+    public List<Customer> getCustomersByLastName(String customerLastName)
+    {
+        return cds.selectCustomersByLastName(customerLastName);
+    }
+
+    public List<Customer> getCustomersByFirstName (String customerFirstName)
+    {
+        return cds.selectCustomersByFirstName(customerFirstName);
+    }
 }

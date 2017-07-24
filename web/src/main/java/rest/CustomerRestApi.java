@@ -47,12 +47,6 @@ public class CustomerRestApi
 
 
     @GET
-    @Path("/customers/{LName}")
-    public List<Customer> getCustomersByLName(@PathParam("LName") String customerLName){
-        return customerController.getCustomerByLName(customerLName);
-    }
-
-    @GET
     @Path("/customers/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Customer getCustomerById(@PathParam("id") Long customerId) {
@@ -62,19 +56,19 @@ public class CustomerRestApi
     @GET
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
-    public Customer findCustomer(@QueryParam("firstname") String customerFirstName, @QueryParam("lastname") String customerLastName, @QueryParam("id") Long customerId)
+    public List<Customer> findCustomer(@QueryParam("firstname") String customerFirstName, @QueryParam("lastname") String customerLastName, @QueryParam("id") Long customerId)
     {
         if (customerId != null)
         {
-            return customerController.getCustomerById(customerId);
+            return customerController.getCustomersById(customerId);
         }
         else if (customerLastName != null && !customerLastName.isEmpty())
         {
-            return customerController.getCustomerByLastName(customerLastName);
+            return customerController.getCustomersByLastName(customerLastName);
         }
         else if (customerFirstName !=null && !customerFirstName.isEmpty())
         {
-            return customerController.getCustomerByFirstName(customerFirstName);
+            return customerController.getCustomersByFirstName(customerFirstName);
         }
         else
         {

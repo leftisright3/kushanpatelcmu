@@ -54,6 +54,8 @@ public class CustomerDataService
         return em.find(Customer.class, id);
     }
 
+
+
     public Customer updateCustomer(Customer customer)
     {
         Calendar now = Calendar.getInstance();
@@ -66,9 +68,22 @@ public class CustomerDataService
     {
         Customer entityToDelete = em.find(Customer.class, idToDelete);
         em.remove(entityToDelete);
+
+
     }
 
-    public Customer selectCustomerByLastName(String customerLastName)
+    public List<Customer> selectCustomersById(Long id)
+    {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
+        Root<Customer> customerEntity = cq.from(Customer.class);
+        Predicate condition = cb.equal(customerEntity.get("id"), id);
+
+        cq.where(condition);
+        return em.createQuery(cq).getResultList();
+    }
+
+    public List<Customer> selectCustomersByLastName(String customerLastName)
     {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
@@ -76,13 +91,13 @@ public class CustomerDataService
         Predicate condition = cb.equal(customerEntity.get("lastName"), customerLastName);
 
         cq.where(condition);
-        return em.createQuery(cq).getSingleResult();
+        return em.createQuery(cq).getResultList();
 
         //ToDo execute query to get customer by last name
 
     }
 
-    public Customer selectCustomerByFirstName(String customerfirstName)
+    public List<Customer> selectCustomersByFirstName(String customerfirstName)
     {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
@@ -90,7 +105,7 @@ public class CustomerDataService
         Predicate condition = cb.equal(customerEntity.get("firstName"), customerfirstName);
 
         cq.where(condition);
-        return em.createQuery(cq).getSingleResult();
+        return em.createQuery(cq).getResultList();
 
         //ToDo execute query to get customer by last name
 
