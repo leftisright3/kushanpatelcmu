@@ -14,6 +14,7 @@ import java.util.List;
 
 @Path("/customer")
 public class CustomerRestApi
+
 {
     @Inject
     CustomerController customerController;
@@ -21,27 +22,31 @@ public class CustomerRestApi
     @GET
     @Path("/customers")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Customer> getAllCustomers() {
+    public List<Customer> getAllCustomers()
+    {
         return customerController.getAllCustomers();
     }
 
     @POST
     @Path("/customers")
     @Produces(MediaType.APPLICATION_JSON)
-    public Customer addNewCustomer(CustomerTO customerTO) {
+    public Customer addNewCustomer(CustomerTO customerTO)
+    {
         return customerController.addNewCustomer(customerTO);
     }
 
     @PUT
     @Path("/customers")
     @Produces(MediaType.APPLICATION_JSON)
-    public Customer editCustomer(CustomerTO customerTO) {
-       return customerController.editCustomer(customerTO);
+    public Customer editCustomer(CustomerTO customerTO)
+    {
+        return customerController.editCustomer(customerTO);
     }
 
     @DELETE
     @Path("/customers/{id}")
-    public void deleteCustomer(@PathParam("id") Long customerId) {
+    public void deleteCustomer(@PathParam("id") Long customerId)
+    {
         customerController.deleteCustomer(customerId);
     }
 
@@ -49,35 +54,31 @@ public class CustomerRestApi
     @GET
     @Path("/customers/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Customer getCustomerById(@PathParam("id") Long customerId) {
+    public Customer getCustomerById(@PathParam("id") Long customerId)
+    {
         return customerController.getCustomerById(customerId);
     }
 
     @GET
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Customer> findCustomer(@QueryParam("firstname") String customerFirstName, @QueryParam("lastname") String customerLastName, @QueryParam("id") Long customerId)
+    public List<Customer> findCustomer(@QueryParam("firstname") String customerFirstName, @QueryParam("lastname")
+    String customerLastName, @QueryParam("id") Long customerId)
     {
-        if (customerId != null)
+        CustomerTO cTO = new CustomerTO();
+        cTO.setId(customerId);
+        cTO.setLastName(customerLastName);
+        cTO.setFirstName(customerFirstName);
+
+        if (customerId != null || customerLastName != null && !customerLastName.isEmpty() || customerFirstName != null  && !customerFirstName.isEmpty())
         {
-            return customerController.getCustomersById(customerId);
+            return customerController.findCustomers(cTO);
         }
-        else if (customerLastName != null && !customerLastName.isEmpty())
-        {
-            return customerController.getCustomersByLastName(customerLastName);
-        }
-        else if (customerFirstName !=null && !customerFirstName.isEmpty())
-        {
-            return customerController.getCustomersByFirstName(customerFirstName);
-        }
+
         else
+
         {
             return null;
         }
-
     }
-
 }
-
-
-

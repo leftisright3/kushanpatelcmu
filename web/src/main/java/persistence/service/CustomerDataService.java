@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,21 +23,13 @@ public class CustomerDataService
     @Inject
     private EntityManager em;
 
-    public List<Customer> getCustomerByLName(String LName){
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
-        Root<Customer> customerEntity = cq.from(Customer.class);
-        cq.select(customerEntity).orderBy(cb.desc(customerEntity.get(LName)));
-        return em.createQuery(cq).getResultList();
-    }
 
     public List<Customer> getAllCustomers()
     {
-
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
         Root<Customer> customerEntity = cq.from(Customer.class);
-        cq.select(customerEntity).orderBy(cb.desc(customerEntity.get("modifiedTime")));
+        cq.select(customerEntity).orderBy(cb.desc(customerEntity.get("id")));
         return em.createQuery(cq).getResultList();
     }
 
@@ -49,10 +42,7 @@ public class CustomerDataService
         return customer;
     }
 
-    public Customer selectCustomerById(Long id)
-    {
-        return em.find(Customer.class, id);
-    }
+
 
 
 
@@ -68,48 +58,34 @@ public class CustomerDataService
     {
         Customer entityToDelete = em.find(Customer.class, idToDelete);
         em.remove(entityToDelete);
-
-
     }
 
-    public List<Customer> selectCustomersById(Long id)
+    public Customer selectCustomerById(Long id)
+    {
+        return em.find(Customer.class, id);
+    }
+
+
+
+    public List<Customer> selectCustomersByMultipleQueries(Customer customer)
     {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
         Root<Customer> customerEntity = cq.from(Customer.class);
-        Predicate condition = cb.equal(customerEntity.get("id"), id);
+        List<Predicate> predicates = new ArrayList<>();
+        if (customer.getId() != null)
+            predicates.add(cb.equal(customerEntity.get("id"), customer.getId()));
 
-        cq.where(condition);
+        if (customer.getFirstName() != null)
+        {
+            predicates.add(cb.equal(customerEntity.get("firstName"), customer.getFirstName()));
+        }
+        if (customer.getLastName() != null)
+        {
+            predicates.add(cb.equal(customerEntity.get("lastName"), customer.getLastName()));
+        }
+
+        cq.where(predicates.toArray(new Predicate[]{}));
         return em.createQuery(cq).getResultList();
     }
-
-    public List<Customer> selectCustomersByLastName(String customerLastName)
-    {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
-        Root<Customer> customerEntity = cq.from(Customer.class);
-        Predicate condition = cb.equal(customerEntity.get("lastName"), customerLastName);
-
-        cq.where(condition);
-        return em.createQuery(cq).getResultList();
-
-        //ToDo execute query to get customer by last name
-
-    }
-
-    public List<Customer> selectCustomersByFirstName(String customerfirstName)
-    {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
-        Root<Customer> customerEntity = cq.from(Customer.class);
-        Predicate condition = cb.equal(customerEntity.get("firstName"), customerfirstName);
-
-        cq.where(condition);
-        return em.createQuery(cq).getResultList();
-
-        //ToDo execute query to get customer by last name
-
-    }
-
-    //
 }

@@ -11,6 +11,7 @@ import java.util.List;
  * Created by patel_000 on 7/19/2017.
  */
 public class CustomerController
+
 {
     @Inject
     CustomerDataService cds;
@@ -38,7 +39,6 @@ public class CustomerController
     }
 
     public Customer editCustomer(CustomerTO customerTO)
-
     {
         Customer cus = cds.selectCustomerById(customerTO.id);
         cus.setAge(customerTO.age);
@@ -65,25 +65,12 @@ public class CustomerController
         return cds.selectCustomerById(customerId);
     }
 
-
-    public Customer findCustomer(String passedString, Integer passedInt)
+    public List<Customer> findCustomers(CustomerTO customerTO)
     {
-
-        return null;
-    }
-
-    public List<Customer> getCustomersById(Long customerId)
-    {
-        return cds.selectCustomersById(customerId);
-    }
-
-    public List<Customer> getCustomersByLastName(String customerLastName)
-    {
-        return cds.selectCustomersByLastName(customerLastName);
-    }
-
-    public List<Customer> getCustomersByFirstName (String customerFirstName)
-    {
-        return cds.selectCustomersByFirstName(customerFirstName);
+        Customer cus = new Customer();
+        cus.setId(customerTO.id);
+        cus.setFirstName(customerTO.firstName);
+        cus.setLastName(customerTO.lastName);
+        return cds.selectCustomersByMultipleQueries(cus);
     }
 }
