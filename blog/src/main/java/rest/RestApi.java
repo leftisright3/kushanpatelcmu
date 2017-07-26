@@ -2,6 +2,7 @@ package rest;
 
 import controller.BlogEntryController;
 import persistence.model.BlogEntry;
+import rest.transfer.BlogEntryTO;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
