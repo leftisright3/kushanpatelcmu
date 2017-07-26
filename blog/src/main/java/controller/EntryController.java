@@ -1,13 +1,12 @@
 package controller;
 
-import persistence.model.BlogEntry;
 import persistence.model.Entry;
 import persistence.model.EntrySection;
-import persistence.service.BlogEntryDataService;
+import persistence.model.YoutubeVideo;
 import persistence.service.EntryDataService;
-import rest.transfer.BlogEntryTO;
 import rest.transfer.EntrySectionTO;
 import rest.transfer.EntryTO;
+import rest.transfer.YoutubeVideoTO;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -33,6 +32,10 @@ public class EntryController {
 
     public EntrySection addNewEntrySection(EntrySectionTO entrySectionTO) {
         return eds.addNewEntrySection(EntryUtils.convertEntrySectionTO(entrySectionTO));
+    }
+
+    public YoutubeVideo addNewYoutubeVideo(YoutubeVideoTO youtubeVideoTO) {
+        return eds.addNewYoutubeVideo(EntryUtils.convertYoutubeVideoId(youtubeVideoTO));
     }
 
 }

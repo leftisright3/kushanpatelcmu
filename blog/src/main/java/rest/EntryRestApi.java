@@ -3,8 +3,10 @@ package rest;
 import controller.EntryController;
 import persistence.model.Entry;
 import persistence.model.EntrySection;
+import persistence.model.YoutubeVideo;
 import rest.transfer.EntrySectionTO;
 import rest.transfer.EntryTO;
+import rest.transfer.YoutubeVideoTO;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -43,6 +45,13 @@ public class EntryRestApi {
     @Produces(MediaType.APPLICATION_JSON)
     public EntrySection addNewEntrySection(EntrySectionTO entrySectionTO) {
         return controller.addNewEntrySection(entrySectionTO);
+    }
+
+    @POST
+    @Path("/videos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public YoutubeVideo addNewYoutubeVideo(YoutubeVideoTO youtubeVideoTO) {
+        return controller.addNewYoutubeVideo(youtubeVideoTO);
     }
 
 }

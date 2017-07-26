@@ -48,7 +48,7 @@ public class EntrySection {
     Calendar sectionDateEnd;
 
     @OneToMany(mappedBy = "entrySection", cascade = CascadeType.ALL)
-    Collection<YoutubeVideoId> youtubeVideoIds;
+    Collection<YoutubeVideo> youtubeVideos;
 
     public Long getId() {
         return id;
@@ -90,12 +90,12 @@ public class EntrySection {
         this.sectionTitle = location;
     }
 
-    public Collection<YoutubeVideoId> getYoutubeVideoIds() {
-        return youtubeVideoIds;
+    public Collection<YoutubeVideo> getYoutubeVideos() {
+        return youtubeVideos;
     }
 
-    public void setYoutubeVideoIds(Collection<YoutubeVideoId> youtubeVideoIds) {
-        this.youtubeVideoIds = youtubeVideoIds;
+    public void setYoutubeVideos(Collection<YoutubeVideo> youtubeVideos) {
+        this.youtubeVideos = youtubeVideos;
     }
 
     public String getSectionHeading() {

@@ -2,10 +2,10 @@ package controller;
 
 import persistence.model.Entry;
 import persistence.model.EntrySection;
-import persistence.model.YoutubeVideoId;
+import persistence.model.YoutubeVideo;
 import rest.transfer.EntrySectionTO;
 import rest.transfer.EntryTO;
-import rest.transfer.YoutubeVideoIdTO;
+import rest.transfer.YoutubeVideoTO;
 
 /**
  * Created by kushan on 7/26/17.
@@ -29,7 +29,9 @@ public class EntryUtils {
     public static EntrySection convertEntrySectionTO(EntrySectionTO entrySectionTO) {
         EntrySection entrySection = new EntrySection();
         entrySection.setId(entrySectionTO.getId());
-        entrySection.setEntry(convertEntryTO(entrySectionTO.getEntry()));
+        if (entrySectionTO.getEntry() != null) {
+            entrySection.setEntry(convertEntryTO(entrySectionTO.getEntry()));
+        }
         entrySection.setSectionContent(entrySectionTO.getSectionContent());
         entrySection.setSectionDateBegin(entrySectionTO.getSectionDateBegin());
         entrySection.setSectionDateEnd(entrySectionTO.getSectionDateEnd());
@@ -40,13 +42,13 @@ public class EntryUtils {
         return entrySection;
     }
 
-    public static YoutubeVideoId convertYoutubeVideoId(YoutubeVideoIdTO youtubeVideoIdTO) {
-        YoutubeVideoId youtubeVideoId = new YoutubeVideoId();
-        youtubeVideoId.setId(youtubeVideoIdTO.getId());
-        youtubeVideoId.setEntrySection(convertEntrySectionTO(youtubeVideoIdTO.getEntrySection()));
-        youtubeVideoId.setVideoId(youtubeVideoIdTO.getVideoId());
-        youtubeVideoId.setVideoUrl(youtubeVideoIdTO.getVideoUrl());
-        return youtubeVideoId;
+    public static YoutubeVideo convertYoutubeVideoId(YoutubeVideoTO youtubeVideoTO) {
+        YoutubeVideo youtubeVideo = new YoutubeVideo();
+        youtubeVideo.setId(youtubeVideoTO.getId());
+        youtubeVideo.setEntrySection(convertEntrySectionTO(youtubeVideoTO.getEntrySection()));
+        youtubeVideo.setVideoId(youtubeVideoTO.getVideoId());
+        youtubeVideo.setVideoUrl(youtubeVideoTO.getVideoUrl());
+        return youtubeVideo;
     }
 
 

@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/rest")
-public class RestApi {
+public class BlogEntryRestApi {
 
     @Inject
     BlogEntryController controller;

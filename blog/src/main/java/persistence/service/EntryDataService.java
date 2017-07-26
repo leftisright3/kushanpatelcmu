@@ -2,6 +2,7 @@ package persistence.service;
 
 import persistence.model.Entry;
 import persistence.model.EntrySection;
+import persistence.model.YoutubeVideo;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -47,5 +48,10 @@ public class EntryDataService {
         entry.setModifiedTime(now);
         em.persist(entry);
         return entry;
+    }
+
+    public YoutubeVideo addNewYoutubeVideo(YoutubeVideo youtubeVideo) {
+        em.persist(youtubeVideo);
+        return youtubeVideo;
     }
 }

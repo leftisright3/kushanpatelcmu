@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "youtube_video_ids")
-public class YoutubeVideoId {
+public class YoutubeVideo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

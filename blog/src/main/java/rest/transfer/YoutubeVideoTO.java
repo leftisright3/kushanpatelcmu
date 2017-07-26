@@ -3,7 +3,7 @@ package rest.transfer;
 /**
  * Created by Kushan Patel 6/19/17.
  */
-public class YoutubeVideoIdTO {
+public class YoutubeVideoTO {
 
     Long id;
     String videoId;

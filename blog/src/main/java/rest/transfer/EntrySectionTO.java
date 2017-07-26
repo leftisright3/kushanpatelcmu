@@ -18,7 +18,7 @@ public class EntrySectionTO {
     EntryTO entry;
     Calendar sectionDateBegin;
     Calendar sectionDateEnd;
-    Set<YoutubeVideoIdTO> youtubeVideoIds;
+    Set<YoutubeVideoTO> youtubeVideoIds;
 
     public Long getId() {
         return id;
@@ -60,11 +60,11 @@ public class EntrySectionTO {
         this.sectionTitle = location;
     }
 
-    public Set<YoutubeVideoIdTO> getYoutubeVideoIds() {
+    public Set<YoutubeVideoTO> getYoutubeVideoIds() {
         return youtubeVideoIds;
     }
 
-    public void setYoutubeVideoIds(Set<YoutubeVideoIdTO> youtubeVideoIds) {
+    public void setYoutubeVideoIds(Set<YoutubeVideoTO> youtubeVideoIds) {
         this.youtubeVideoIds = youtubeVideoIds;
     }
 
