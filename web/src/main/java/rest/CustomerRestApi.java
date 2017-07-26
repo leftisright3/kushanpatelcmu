@@ -62,23 +62,23 @@ public class CustomerRestApi
     @GET
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Customer> findCustomer(@QueryParam("firstname") String customerFirstName, @QueryParam("lastname")
-    String customerLastName, @QueryParam("id") Long customerId)
+    public List<Customer> findCustomers(@QueryParam("searchstr") String searchStr)
     {
-        CustomerTO cTO = new CustomerTO();
-        cTO.setId(customerId);
-        cTO.setLastName(customerLastName);
-        cTO.setFirstName(customerFirstName);
-
-        if (customerId != null || customerLastName != null && !customerLastName.isEmpty() || customerFirstName != null  && !customerFirstName.isEmpty())
+        if (searchStr != null && !searchStr.isEmpty())
         {
-            return customerController.findCustomers(cTO);
+            return customerController.findCustomers(searchStr);
         }
-
         else
-
         {
             return null;
         }
+    }
+
+    @POST
+    @Path("/supersearch")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Customer> findCustomers(CustomerTO customerTO)
+    {
+        return customerController.findCustomers(customerTO);
     }
 }
