@@ -14,6 +14,7 @@ import java.util.List;
 
 @Path("/customer")
 public class CustomerRestApi
+
 {
     @Inject
     CustomerController customerController;
@@ -29,17 +30,17 @@ public class CustomerRestApi
     @POST
     @Path("/customers")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addNewCustomer(CustomerTO customerTO)
+    public Customer addNewCustomer(CustomerTO customerTO)
     {
-        customerController.addNewCustomer(customerTO);
+        return customerController.addNewCustomer(customerTO);
     }
 
     @PUT
     @Path("/customers")
     @Produces(MediaType.APPLICATION_JSON)
-    public void editCustomer(CustomerTO customerTO)
+    public Customer editCustomer(CustomerTO customerTO)
     {
-        customerController.editCustomer(customerTO);
+        return customerController.editCustomer(customerTO);
     }
 
     @DELETE
@@ -49,12 +50,35 @@ public class CustomerRestApi
         customerController.deleteCustomer(customerId);
     }
 
+
     @GET
     @Path("/customers/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Customer getSpecificCustomer(@PathParam("id") Long customerId)
+    public Customer getCustomerById(@PathParam("id") Long customerId)
     {
         return customerController.getCustomerById(customerId);
     }
 
+    @GET
+    @Path("/search")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Customer> findCustomer(@QueryParam("firstname") String customerFirstName, @QueryParam("lastname")
+    String customerLastName, @QueryParam("id") Long customerId)
+    {
+        CustomerTO cTO = new CustomerTO();
+        cTO.setId(customerId);
+        cTO.setLastName(customerLastName);
+        cTO.setFirstName(customerFirstName);
+
+        if (customerId != null || customerLastName != null && !customerLastName.isEmpty() || customerFirstName != null  && !customerFirstName.isEmpty())
+        {
+            return customerController.findCustomers(cTO);
+        }
+
+        else
+
+        {
+            return null;
+        }
+    }
 }

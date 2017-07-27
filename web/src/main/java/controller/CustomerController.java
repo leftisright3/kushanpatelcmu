@@ -11,6 +11,7 @@ import java.util.List;
  * Created by patel_000 on 7/19/2017.
  */
 public class CustomerController
+
 {
     @Inject
     CustomerDataService cds;
@@ -20,7 +21,7 @@ public class CustomerController
         return cds.getAllCustomers();
     }
 
-    public void addNewCustomer(CustomerTO customerTO)
+    public Customer addNewCustomer(CustomerTO customerTO)
     {
         Customer cus = new Customer();
         cus.setAge(customerTO.age);
@@ -34,12 +35,12 @@ public class CustomerController
         cus.setModifiedByUid(customerTO.modifiedByUid);
 
         cds.persistCustomer(cus);
+        return cus;
     }
 
-    public void editCustomer(CustomerTO customerTO)
-
+    public Customer editCustomer(CustomerTO customerTO)
     {
-        Customer cus = cds.selectCustomer(customerTO.id);
+        Customer cus = cds.selectCustomerById(customerTO.id);
         cus.setAge(customerTO.age);
         cus.setFirstName(customerTO.firstName);
         cus.setLastName(customerTO.lastName);
@@ -50,6 +51,7 @@ public class CustomerController
         cus.setCreatedByUid(customerTO.createdByUid);
         cus.setModifiedByUid(customerTO.modifiedByUid);
         cds.updateCustomer(cus);
+        return cus;
     }
 
     public void deleteCustomer(Long customerId)
@@ -57,8 +59,18 @@ public class CustomerController
         cds.deleteCustomer(customerId);
     }
 
+
     public Customer getCustomerById(Long customerId)
     {
-        return cds.selectCustomer(customerId);
+        return cds.selectCustomerById(customerId);
+    }
+
+    public List<Customer> findCustomers(CustomerTO customerTO)
+    {
+        Customer cus = new Customer();
+        cus.setId(customerTO.id);
+        cus.setFirstName(customerTO.firstName);
+        cus.setLastName(customerTO.lastName);
+        return cds.selectCustomersByMultipleQueries(cus);
     }
 }
