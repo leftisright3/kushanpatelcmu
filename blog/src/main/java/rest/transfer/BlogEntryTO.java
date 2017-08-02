@@ -1,4 +1,4 @@
-package rest;
+package rest.transfer;
 
 /**
  * Created by Amar on 6/30/2017.

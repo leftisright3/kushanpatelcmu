@@ -2,7 +2,7 @@ package controller;
 
 import persistence.model.BlogEntry;
 import persistence.service.BlogEntryDataService;
-import rest.BlogEntryTO;
+import rest.transfer.BlogEntryTO;
 
 import javax.inject.Inject;
 import java.util.List;

@@ -2,6 +2,7 @@ package rest;
 
 import controller.BlogEntryController;
 import persistence.model.BlogEntry;
+import rest.transfer.BlogEntryTO;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -9,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/rest")
-public class RestApi {
+public class BlogEntryRestApi {
 
     @Inject
     BlogEntryController controller;
