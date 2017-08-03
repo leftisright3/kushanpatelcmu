@@ -3,6 +3,7 @@ package persistence.model;
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Kushan Patel 6/19/17.
@@ -47,7 +48,7 @@ public class Entry {
     String activities;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "entry")
-    Collection<EntrySection> entrySections;
+    List<EntrySection> entrySections;
 
     public Long getId() {
         return id;
@@ -129,11 +130,11 @@ public class Entry {
         this.travelDateEnd = travelDateEnd;
     }
 
-    public Collection<EntrySection> getEntrySections() {
+    public List<EntrySection> getEntrySections() {
         return entrySections;
     }
 
-    public void setEntrySections(Collection<EntrySection> entrySections) {
+    public void setEntrySections(List<EntrySection> entrySections) {
         this.entrySections = entrySections;
     }
 }

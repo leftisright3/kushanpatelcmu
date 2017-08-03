@@ -19,7 +19,7 @@ public class EntryController {
     @Inject
     EntryDataService eds;
 
-    public List<Entry> getAllEntries(){
+    public List<Entry>  getAllEntries(){
         return eds.getAllEntries();
     }
 

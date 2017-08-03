@@ -7,6 +7,9 @@ import rest.transfer.EntrySectionTO;
 import rest.transfer.EntryTO;
 import rest.transfer.YoutubeVideoTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by kushan on 7/26/17.
  */
@@ -23,6 +26,14 @@ public class EntryUtils {
         entry.setActivities(entryTO.getActivities());
         entry.setTravelDateBegin(entryTO.getTravelDateBegin());
         entry.setTravelDateEnd(entryTO.getTravelDateEnd());
+        if (entryTO.getEntrySections() != null) {
+            List<EntrySectionTO> eato = entryTO.getEntrySections();
+            List<EntrySection> es = new ArrayList<>();
+            for (EntrySectionTO section : eato) {
+                es.add(convertEntrySectionTO(section));
+            }
+            entry.setEntrySections(es);
+        }
         return entry;
     }
 

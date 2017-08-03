@@ -2,6 +2,7 @@ package rest.transfer;
 
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Kushan Patel 6/19/17.
@@ -18,7 +19,7 @@ public class EntryTO {
     String heading;
     String locations;
     String activities;
-    Collection<EntrySectionTO> entrySections;
+    List<EntrySectionTO> entrySections;
 
     public Long getId() {
         return id;
@@ -100,11 +101,11 @@ public class EntryTO {
         this.travelDateEnd = travelDateEnd;
     }
 
-    public Collection<EntrySectionTO> getEntrySections() {
+    public List<EntrySectionTO> getEntrySections() {
         return entrySections;
     }
 
-    public void setEntrySections(Collection<EntrySectionTO> entrySections) {
+    public void setEntrySections(List<EntrySectionTO> entrySections) {
         this.entrySections = entrySections;
     }
 }
