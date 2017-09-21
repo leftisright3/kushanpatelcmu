@@ -1,0 +1,89 @@
+<section class="bg-light-gray">
+    <!--<a class="navbar-brand page-scroll" href="/">Home</a>-->
+
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Entry Title</th>
+                    <th>Location</th>
+                    <th>Heading</th>
+                    <th>Description</th>
+                    <th>Travel Dates</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="entry in entries">
+                    <td>{{entry.title}}</td>
+                    <td>{{entry.location}}</td>
+                    <td>{{entry.heading}}</td>
+                    <td>{{entry.description}}</td>
+                    <td>{{entry.travelDateBegin}} - {{entry.travelDateEnd}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-primary">Add New</button>
+    </div>
+</section>
+
+<section class="bg-light-gray">
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="titleInput">Title</label>
+                <input type="text" class="form-control" id="titleInput" aria-describedby="titleHelp" placeholder="Title">
+                <small id="titleHelp" class="form-text text-muted">Entry Title</small>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Location/Country">
+            </div>
+
+            <div class="form-group">
+                <label for="heading">Heading</label>
+                <input type="text" class="form-control" id="heading" placeholder="Heading">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" placeholder="Description">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleTextarea">Example textarea</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="activities">Activities</label>
+                <input type="text" class="form-control" id="activities" placeholder="Activities (as you would want it to appear)">
+            </div>
+
+        <!--<div class="row">-->
+            <!--<div class='col-sm-3'>-->
+                <div class="form-group">
+                    <label for="travelDateBegin">Travel Date Begin</label>
+                    <div class='input-group date' id='travelDateBegin'>
+                        <input type='text' class="form-control"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            <!--</div>-->
+
+            <!--<div class='col-sm-3'>-->
+                <div class="form-group">
+                    <label for="travelDateEnd">Travel Date End</label>
+                    <div class='input-group date' id='travelDateEnd'>
+                        <input type='text' class="form-control"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</section>
