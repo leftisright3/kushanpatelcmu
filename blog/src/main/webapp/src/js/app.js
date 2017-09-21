@@ -12,14 +12,14 @@ blog.config(["$routeProvider", "$locationProvider", "$sceDelegateProvider",
             when("/mgmt", {
                 templateUrl: "src/html/management.html",
                 controller: 'mgmtCtrl'
-            }).
-            when("/home", {
-                templateUrl: "src/html/home.html",
-//                controller: 'mainCtrl'
-            }).
-            when("/", {
-                redirectTo: "/home"
             })
+//            when("/home", {
+//                templateUrl: "src/html/home.html",
+//                controller: 'mainCtrl'
+//            }).
+//            when("/", {
+//                redirectTo: "/home"
+//            })
     }
 ]);
 
